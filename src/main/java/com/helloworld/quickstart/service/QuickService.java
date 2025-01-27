@@ -18,12 +18,17 @@ public class QuickService {
     @Autowired
     private QuickMapper quickMapper;
 
-    public boolean registerItem(ItemDto itemDto) {
-        //TODO: DB insert
-
-        log.info("service ...");
+    public int registerItem(ItemDto itemDto) {
+        HashMap<String, String> paramMap = new HashMap<>();
         
-        return true;
+        paramMap.put("id", itemDto.getId());
+        paramMap.put("name", itemDto.getName());
+
+        int resCnt = quickMapper.registerItem(paramMap);
+
+        log.info("insert info : " + itemDto.toString() + " insert count : {}", resCnt);
+        
+        return resCnt;
     }
 
     public ArrayList<ItemDto> getItemById(String id) {

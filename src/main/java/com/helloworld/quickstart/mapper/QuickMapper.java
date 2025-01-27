@@ -11,4 +11,6 @@ import com.helloworld.quickstart.dto.ItemDto;
 public interface QuickMapper {
 
     ArrayList<ItemDto> findById(HashMap<String, String> paramMap);
+
+    int registerItem(HashMap<String, String> paramMap);
 }

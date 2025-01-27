@@ -21,4 +21,8 @@ public class ItemDto {
         this.id = id;
     }
 
+    public String toString() {
+        return "ItemDto{id='" + id + "', name='" + name + "'}";
+    }
+
 }

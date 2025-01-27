@@ -9,4 +9,9 @@
         where id = #{id}
     </select>
 
+    <insert id="registerItem" parameterType="hashmap">
+        insert into item(id, name)
+        values (#{id}, #{name})
+    </insert>
+
 </mapper>

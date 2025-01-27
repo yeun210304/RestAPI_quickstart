@@ -52,9 +52,9 @@ public class QuickController {
     public ResponseDto registerItem(@RequestBody ItemDto item) {
         log.info("item: {}", item);
 
-        boolean res = quickService.registerItem(item);
+        int resCnt = quickService.registerItem(item);
         
-        if(res) {
+        if(resCnt > 0) {
             ResponseDto responseDto = new ResponseDto();
             responseDto.setMessage("ok");
             return responseDto;
