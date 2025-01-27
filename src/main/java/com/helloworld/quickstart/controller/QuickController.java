@@ -1,7 +1,5 @@
 package com.helloworld.quickstart.controller;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,12 +47,12 @@ public class QuickController {
     }
 
     @PostMapping("/item")
-    public ResponseDto registerItem(@RequestBody ItemDto item) {
-        log.info("item: {}", item);
+    public ResponseDto registerItem(@RequestBody ItemDto itemDto) {
+        log.info("입력값 : ", itemDto.toString());
 
-        int resCnt = quickService.registerItem(item);
+        boolean res = quickService.registerItem(itemDto);
         
-        if(resCnt > 0) {
+        if(res) {
             ResponseDto responseDto = new ResponseDto();
             responseDto.setMessage("ok");
             return responseDto;
@@ -66,10 +64,8 @@ public class QuickController {
     }
 
     @GetMapping("/item")
-    public ArrayList<ItemDto> getItem(@RequestParam("id") String id) {
-        ArrayList<ItemDto> res = quickService.getItemById(id);
-        return res;
+    public ItemDto getItem(@RequestParam("id") String id) {
+        return quickService.getItemById(id);
     }
-
 
 }
